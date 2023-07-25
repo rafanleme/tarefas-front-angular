@@ -1,0 +1,12 @@
+<div class="container pt-4">
+    <h4>Lista de tarefas</h4>
+    <a routerLink="adicionar">Adicionar tarefa</a>
+    <div class="row">
+
+        <app-card-tarefa
+            *ngFor="let tarefa of tarefas"
+            [tarefa]="tarefa"
+        ></app-card-tarefa>
+        
+    </div>
+</div>

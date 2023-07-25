@@ -1,0 +1,10 @@
+<div class="card col m-1" style="min-width: 300px; max-width: 300px">
+    <div class="card-body">
+        <h5 class="card-title">{{tarefa.titulo}}</h5>
+        <p class="card-text">{{tarefa.data | date:"dd/MM/yyyy"}}</p>
+    </div>
+    <form action="processa-excluir-tarefa">
+        <input type="hidden" value="" name="tarefa-excluir" />
+        <button class="btn mb-2">Excluir</button>
+    </form>
+</div>
