@@ -4,7 +4,8 @@
     <div class="row">
 
         <app-card-tarefa
-            *ngFor="let tarefa of tarefas"
+            class="col"
+            *ngFor="let tarefa of tarefas | async"
             [tarefa]="tarefa"
         ></app-card-tarefa>
         

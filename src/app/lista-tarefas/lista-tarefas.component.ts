@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Tarefa, TarefaService } from '../services/tarefa.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-lista-tarefas',
@@ -7,22 +9,11 @@ import { Component } from '@angular/core';
 })
 export class ListaTarefasComponent {
 
-  tarefas = [
-    {
-      titulo: "Estudar Typescript",
-      data: new Date(),
-      urgente: false
-    },
-    {
-      titulo: "Estudar Spring",
-      data: new Date(),
-      urgente: true
-    },
-    {
-      titulo: "Estudar Matemática",
-      data: new Date(),
-      urgente: true
-    },
-  ];
+  tarefas: Observable<Tarefa[]>;
 
+  //Injeção de dependência
+  //Trazemos o service para o componente
+  constructor(private tarefaService: TarefaService) {
+    this.tarefas = tarefaService.getTodas();
+  }
 }

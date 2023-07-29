@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TarefaService } from '../services/tarefa.service';
 
 @Component({
   selector: 'app-adicionar-tarefa',
