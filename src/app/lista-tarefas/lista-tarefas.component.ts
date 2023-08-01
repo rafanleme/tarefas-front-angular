@@ -16,4 +16,8 @@ export class ListaTarefasComponent {
   constructor(private tarefaService: TarefaService) {
     this.tarefas = tarefaService.getTodas();
   }
+
+  atualizarLista() {
+    this.tarefas = this.tarefaService.getTodas();
+  }
 }

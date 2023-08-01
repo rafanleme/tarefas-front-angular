@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tarefa, TarefaService } from '../services/tarefa.service';
 import { firstValueFrom } from 'rxjs';
 
@@ -10,10 +10,19 @@ import { firstValueFrom } from 'rxjs';
 export class CardTarefaComponent {
 
   @Input() tarefa?: Tarefa;
+  @Output() notificarExclusao = new EventEmitter();
 
-  constructor(private tarefaService: TarefaService){}
+  constructor(
+    private tarefaService: TarefaService
+  ) { }
 
-  excluir() {
-    firstValueFrom(this.tarefaService.deletarPeloId(this.tarefa!.id));
+  async excluir() {
+    await firstValueFrom(this.tarefaService.deletarPeloId(this.tarefa!.id));
+
+    this.notificarExclusao.emit();
+  }
+
+  editar() {
+
   }
 }

@@ -8,6 +8,9 @@ import { CardTarefaComponent } from './card-tarefa/card-tarefa.component';
 import { AdicionarTarefaComponent } from './adicionar-tarefa/adicionar-tarefa.component';
 import { FormTarefaComponent } from './form-tarefa/form-tarefa.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditarTarefaComponent } from './editar-tarefa/editar-tarefa.component';
+import { EditarFormTarefaComponent } from './editar-form-tarefa/editar-form-tarefa.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { AppRoutingModule } from './app-routing.module';
     ListaTarefasComponent,
     CardTarefaComponent,
     AdicionarTarefaComponent,
-    FormTarefaComponent
+    FormTarefaComponent,
+    EditarTarefaComponent,
+    EditarFormTarefaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
