@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Tarefa, TarefaService } from '../services/tarefa.service';
 import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-tarefa',
@@ -13,7 +14,8 @@ export class CardTarefaComponent {
   @Output() notificarExclusao = new EventEmitter();
 
   constructor(
-    private tarefaService: TarefaService
+    private tarefaService: TarefaService,
+    private router: Router
   ) { }
 
   async excluir() {
@@ -23,6 +25,6 @@ export class CardTarefaComponent {
   }
 
   editar() {
-
+    this.router.navigate(['editar-tarefa', this.tarefa?.id]);
   }
 }

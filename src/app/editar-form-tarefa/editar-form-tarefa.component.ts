@@ -1,22 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
-import { TarefaService } from '../services/tarefa.service';
+import { Tarefa, TarefaService } from '../services/tarefa.service';
 
 @Component({
   selector: 'app-editar-form-tarefa',
   templateUrl: './editar-form-tarefa.component.html',
   styleUrls: ['./editar-form-tarefa.component.css']
 })
-export class EditarFormTarefaComponent {
+export class EditarFormTarefaComponent implements OnInit {
 
   checkoutForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private tarefaService: TarefaService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.checkoutForm = this.formBuilder.group({
       descricao: '',
@@ -25,10 +26,23 @@ export class EditarFormTarefaComponent {
     });
   }
 
+  async ngOnInit(): Promise<void> {
+    //recuperando o id da tarefa da URL
+    const routeParams = this.route.snapshot.paramMap;
+    const tarefaId = routeParams.get("tarefaId");
+
+    if(tarefaId){
+      const tarefa = await firstValueFrom(this.tarefaService.buscarPorId(tarefaId));
+      this.checkoutForm.setValue({
+        descricao: tarefa.descricao,
+        data: tarefa.data,
+        urgente: tarefa.urgente
+      });
+    }
+  }
+
   async salvarTarefa() {
-    await firstValueFrom(this.tarefaService.adicionar(this.checkoutForm.value));
-    alert("Tarefa add com sucesso");
-    this.router.navigate([""]);
+    console.log(this.checkoutForm.value);
   }
   
 }

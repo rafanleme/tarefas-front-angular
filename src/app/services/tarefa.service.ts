@@ -26,4 +26,8 @@ export class TarefaService {
   adicionar(tarefa: Tarefa) {
     return this.http.post("http://localhost:8080/tarefas", tarefa);
   }
+
+  buscarPorId(id: string){
+    return this.http.get<Tarefa>("http://localhost:8080/tarefas/" + id);
+  }
 }
