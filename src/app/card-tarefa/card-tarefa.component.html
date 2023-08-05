@@ -3,8 +3,10 @@
         <h5 class="card-title">{{tarefa?.descricao}}</h5>
         <p class="card-text">{{tarefa?.data | date:"dd/MM/yyyy"}}</p>
     </div>
-    <button (click)="excluir()" class="btn mb-2">Excluir</button>
-    <button (click)="editar()" class="btn mb-2">Editar</button>
+    <div class="action-container">
+        <span (click)="excluir()" class="material-icons">delete</span>
+        <span (click)="editar()" class="material-icons">edit</span>
+    </div>
 </div>
 
 <!--

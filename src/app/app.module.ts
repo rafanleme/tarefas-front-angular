@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditarTarefaComponent } from './editar-tarefa/editar-tarefa.component';
 import { EditarFormTarefaComponent } from './editar-form-tarefa/editar-form-tarefa.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { EditarFormTarefaComponent } from './editar-form-tarefa/editar-form-tare
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

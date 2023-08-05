@@ -30,4 +30,8 @@ export class TarefaService {
   buscarPorId(id: string){
     return this.http.get<Tarefa>("http://localhost:8080/tarefas/" + id);
   }
+
+  atualizarPeloId(id: string, tarefa: Tarefa){
+    return this.http.put("http://localhost:8080/tarefas/" + id, tarefa);
+  }
 }
